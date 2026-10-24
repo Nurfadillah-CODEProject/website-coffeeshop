@@ -1,5 +1,4 @@
-import MenuCard from "@/components/MenuCard";
-import { menuItems } from "@/data/menu";
+import MenuList from "@/components/MenuList";
 
 export default function Home() {
   return (
@@ -7,11 +6,7 @@ export default function Home() {
       <h1 className="text-3xl font-bold text-amber-900">Kopi Kita</h1>
       <p className="mt-2 text-amber-700">Pilih menu favoritmu.</p>
 
-      <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3">
-        {menuItems.map((item) => (
-          <MenuCard key={item.id} item={item} />
-        ))}
-      </div>
+      <MenuList />
     </main>
   );
 }

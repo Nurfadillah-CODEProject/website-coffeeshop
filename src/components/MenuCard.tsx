@@ -1,6 +1,11 @@
 import type { MenuItem } from "@/data/menu";
 
-export default function MenuCard({ item }: { item: MenuItem }) {
+type Props = {
+  item: MenuItem;
+  onAdd: () => void;
+};
+
+export default function MenuCard({ item, onAdd }: Props) {
   return (
     <div className="rounded-xl bg-white p-4 shadow">
       <h2 className="font-semibold text-amber-900">{item.nameId}</h2>
@@ -12,7 +17,10 @@ export default function MenuCard({ item }: { item: MenuItem }) {
           Habis
         </span>
       ) : (
-        <button className="mt-3 rounded bg-amber-700 px-3 py-1 text-sm text-white">
+        <button
+          onClick={onAdd}
+          className="mt-3 rounded bg-amber-700 px-3 py-1 text-sm text-white"
+        >
           Tambah
         </button>
       )}
