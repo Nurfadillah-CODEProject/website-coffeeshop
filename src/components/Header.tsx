@@ -5,6 +5,12 @@ import { useLanguage } from "@/components/LanguageProvider";
 export default function Header({ count }: { count: number }) {
   const { lang, setLang, t } = useLanguage();
 
+  function goToBasket() {
+    document
+      .getElementById("basket")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   return (
     <header className="flex h-[72px] items-center justify-between border-b border-line px-5 md:h-[104px] md:px-[72px]">
       <p className="font-serif text-[28px] font-semibold md:text-[38px]">
@@ -16,7 +22,6 @@ export default function Header({ count }: { count: number }) {
         <span className="border-b border-ink py-2 font-semibold">
           {t.navMenu}
         </span>
-        <span className="border-b border-transparent py-2">{t.navStory}</span>
         <span className="border-b border-transparent py-2">{t.navVisit}</span>
       </nav>
 
@@ -35,7 +40,10 @@ export default function Header({ count }: { count: number }) {
           ))}
         </div>
 
-        <div className="flex h-11 items-center gap-3 rounded border border-line px-4 text-[13px]">
+        <button
+          onClick={goToBasket}
+          className="flex h-11 items-center gap-3 rounded border border-line px-4 text-[13px] hover:bg-cream-dark"
+        >
           <svg
             width="18"
             height="18"
@@ -51,7 +59,7 @@ export default function Header({ count }: { count: number }) {
           <span className="flex size-6 items-center justify-center rounded-full bg-ink text-[11px] text-cream">
             {count}
           </span>
-        </div>
+        </button>
       </div>
     </header>
   );

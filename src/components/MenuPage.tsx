@@ -103,14 +103,9 @@ export default function MenuPage({
         <div className="mt-7 flex flex-col gap-2 rounded bg-cream-dark px-5 py-4 text-[13px] sm:flex-row sm:items-center sm:justify-between">
           <p>
             <span className="font-medium">
-              {tableNumber ? `${t.tableLabel} ${tableNumber}` : t.noTable}
+              {tableNumber ? `${t.tableLabel} ${tableNumber}` : t.tableNote}
             </span>
-            {tableNumber && (
-              <span className="text-muted">
-                {" "}
-                · {t.tableNote} · {t.readyIn}
-              </span>
-            )}
+            <span className="text-muted"> · {t.readyIn}</span>
           </p>
           <p className="text-xs text-olive">● {t.openUntil}</p>
         </div>
@@ -155,7 +150,10 @@ export default function MenuPage({
             </p>
           </section>
 
-          <aside className="h-fit rounded-md border border-line bg-card p-6 lg:sticky lg:top-6">
+          <aside
+            id="basket"
+            className="h-fit scroll-mt-6 rounded-md border border-line bg-card p-6"
+          >
             <div className="flex items-center justify-between">
               <h2 className="font-serif text-[30px] font-medium">
                 {t.yourBasket}
@@ -222,12 +220,12 @@ export default function MenuPage({
                 <button
                   onClick={checkout}
                   disabled={!tableNumber}
-                  className="mt-6 flex h-[50px] w-full items-center justify-center gap-6 rounded bg-ink text-sm font-medium text-cream disabled:cursor-not-allowed disabled:opacity-40"
+                  className="mt-6 flex h-[50px] w-full items-center justify-center gap-6 rounded bg-ink text-sm font-medium text-cream"
                 >
                   {t.checkout} <span className="text-xl">↗</span>
                 </button>
                 <p className="mt-4 text-center text-[11px] leading-normal text-muted">
-                  {tableNumber ? t.basketNote : t.noTable}
+                  {t.basketNote}
                 </p>
               </>
             )}
